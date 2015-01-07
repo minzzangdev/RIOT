@@ -27,7 +27,7 @@
 The friendly Operating System for IoT!
 
 ## TEST
-Test edit for git push
+Test edit for git push. Second Test edit for git branch push
 
 ## FEATURES
 RIOT OS is an operating system for Internet of Things (IoT) devices. It is based on a microkernel and designed for
