@@ -112,7 +112,7 @@ CFLAGS += -DCPU_$(CPUDEF)=\"$(CPU)\" -DRIOT_CPU=CPU_$(CPUDEF)
 CFLAGS += -DMCU_$(MCUDEF)=\"$(MCU)\" -DRIOT_MCU=MCU_$(MCUDEF)
 
 # OSX fails to create empty archives. Provide a wrapper to catch that error.
-ifneq (0, $(shell mkdir -p $(BINDIR); $(AR) -rc $(BINDIR)empty-archive.a 2> /dev/null; echo $$?))
+ifneq (0, $(shell mkdir -p $(BINDIR); $(AR) rc $(BINDIR)empty-archive.a 2> /dev/null; echo $$?))
 	AR := $(RIOTBASE)/dist/ar-wrapper $(AR)
 endif
 
@@ -140,7 +140,7 @@ BASELIBS += $(BINDIR)$(BOARD)_base.a
 BASELIBS += $(BINDIR)${APPLICATION}.a
 BASELIBS += $(USEPKG:%=${BINDIR}%.a)
 
-.PHONY: all clean flash term doc debug debug-server reset objdump
+.PHONY: all clean flash term doc debug debug-server reset objdump help
 
 ELFFILE ?= $(BINDIR)$(APPLICATION).elf
 HEXFILE ?= $(ELFFILE:.elf=.hex)
@@ -302,3 +302,6 @@ else # RIOT_VERSION
 	$(MAKE) RIOTBASE=$(<D) $(filter-out clean, ${MAKECMDGOALS})
 
 endif
+
+help:
+	@$(MAKE) -qp | sed -ne 's/\(^[a-z][a-z_-]*\):.*/\1/p' | sort | uniq

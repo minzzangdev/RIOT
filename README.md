@@ -26,8 +26,12 @@
 
 The friendly Operating System for IoT!
 
+<<<<<<< HEAD
 ## TEST
 Test edit for git push. Second Test edit for git branch push
+=======
+![Travis CI Status](https://travis-ci.org/RIOT-OS/RIOT.svg?branch=master)
+>>>>>>> upstream/master
 
 ## FEATURES
 RIOT OS is an operating system for Internet of Things (IoT) devices. It is based on a microkernel and designed for

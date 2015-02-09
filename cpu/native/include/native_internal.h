@@ -111,7 +111,7 @@ extern int (*real_pipe)(int[2]);
 /* The ... is a hack to save includes: */
 extern int (*real_select)(int nfds, ...);
 extern int (*real_setitimer)(int which, const struct itimerval
-        *restrict value, struct itimerval *restrict ovalue);
+        *__restrict value, struct itimerval *__restrict ovalue);
 extern int (*real_setsockopt)(int socket, ...);
 extern int (*real_socket)(int domain, int type, int protocol);
 extern int (*real_printf)(const char *format, ...);
@@ -145,6 +145,8 @@ extern const char *_progname;
 extern char **_native_argv;
 extern pid_t _native_pid;
 extern pid_t _native_id;
+extern unsigned _native_rng_seed;
+extern int _native_rng_mode; /**< 0 = /dev/random, 1 = random(3) */
 extern const char *_native_unix_socket_path;
 
 #ifdef MODULE_UART0
